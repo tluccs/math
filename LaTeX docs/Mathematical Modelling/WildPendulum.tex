@@ -1,0 +1,91 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 10
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+Given a pendulum with the following information:
+Thin rod, length L = 1m; mass of rod is negligible, mass at pivot point m = 1kg, at t = 0, $\theta$ = 0, and 400 J Kinetic Energy is imparted into the pendulum.
+
+We know $E = 1/2 * mv^2$ 
+
+Therefore $v = \sqrt{(2E/m)}$
+
+Also, $-mgL sin(\theta) = torque_{net} = I \theta''$ 
+
+As the net force is due to gravity, and taking the magnitude of the cross product of r and f (to get torque), we get the left hand side.
+
+Here, $I = mL^2,$ 
+
+So our differential equation is
+
+Also, $-g/L*sin(\theta) = \theta''$ 
+
+From $v = \sqrt{(2E/m)}$, this tells us $\theta'(0) = 1/L*\sqrt{(2E/m)} = \sqrt{\frac{2E}{mL^2}}$ 
+
+Let's nondimensionalise the model, by letting
+
+$$t = \tau*\bar{t} = \tau*\sqrt{\frac{mL^2}{2E}}$$
+
+I.e. $\theta'(0) = 1/\bar{t} $
+
+And note $\theta$ is already unit-less, so we have 
+
+$$-\frac{g}{L}*sin(\theta) = \theta'' / \bar{t}^2$$
+
+$$-\frac{g \bar{t}^2}{L}*sin(\theta) = \theta''$$
+
+Let $\epsilon = \frac{g \bar{t}^2}{L}$, so
+
+$$-\epsilon*sin(\theta) = \theta''$$
+
+Since $\epsilon < 1$, we make the ansantz that $\theta = \theta_0 + \epsilon*\theta_1 ... $
+
+Furthermore, note the taylor expansion:
+
+$$sin(\theta) = x - x^3/6 + ...$$
+
+So we have 
+
+$$0 = \theta_0''$$
+
+Subject to $\theta_0(0) = 0$, $\theta_0'(0) = 1$ (Since $\theta_0'(t=0) = 1/\bar{t}$). Then it is obvious that
+
+$$\theta_0 = \tau $$
+
+And our other differential equation is:
+
+$$-\epsilon(\theta_0 + O(\epsilon) - (\theta_0 + O(\epsilon) )^3/6 + ... ) = \epsilon*\theta_1 ''$$
+
+Grouping all the O(1) terms, 
+
+$$(\theta_0) - (\theta_0) )^3/6 + ... ) = \theta_1 ''$$
+
+And the left side is simply the taylor series for sin, so
+
+$$-sin(\theta_0) = \theta_1 ''$$
+
+$$\theta_1 '' = -sin(\tau)$$
+
+$$\theta_1 = sin(\tau)+C\tau+D$$
+
+Given that  $\theta_1(0) = 0$, $\theta_1'(0) = 0$
+
+Then D = 0 and C = -1 
+
+So the final solution is 
+
+$$\theta = \tau + \epsilon(sin(\tau)-\tau)$$
+
+
+
+
+
+
+
+  
+\end{document}

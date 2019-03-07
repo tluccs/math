@@ -1,0 +1,527 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+
+a. Since there are 6 inputs and each has 2 states, there are $2^6 = 64$ possible input combinations, so there are 64 outputs.
+
+
+ \vspace{10cm}
+
+
+
+Zero-order transfer function synthesis:
+
+Since $H(s) = 0.5$, the circuit shown in diagram 1 will work; simply a voltage divider circuit with $R_1 = R_2 = 1000\Omega$
+
+This way, $V_{o}= V{i}*0.5$, or $H(s) = 0.5$
+
+Theoretically, the bode plot is
+
+ $$G_{dB} = 20 \log |H(j\omega)| =  20 \log (0.5) = -6.02dB$$
+ 
+ i.e. a constant.
+ 
+1st-order transfer function synthesis:
+
+Since it is first order, we can solve this using a RC circuit. It has one pole and no zeros, so therefore, take $V_{o}$ across the capacitor and we have
+
+$$H(s) = \frac{1/Cs}{1/Cs+R} = \frac{1}{1+RCs}$$
+
+We are also given the pole is at $-10^{3} rad/s$, 
+
+so let $ RC = 10^{-3}$, or $R = 1000 \Omega,  C = 1 \mu F$
+
+and we have the circuit of diagram 2.
+
+Theoretically, the bode plot is
+
+ $$G_{dB} = - 20 \log ({1+10^{-3}\omega}) $$
+  
+So the plot will decrease by 20dB/dec for most frequencies. For low frequencies, it will be approximately 0.
+ 
+ .
+ 2nd-order transfer function synthesis:
+ 
+Part a. $ H(s)$ has two real poles at $(3 \pm \sqrt{5} )/2$, no real zeros and H(0) = 1
+
+To get 2 poles, we need 2 RC circuits combined as in diagram 3a. Then use source transformations to get that 
+
+$$V_o = \frac{V_i(R||1/Cs)}{R}  * \frac{1/Cs}{R||1/Cs+R+1/Cs}$$
+ 
+ Then the transfer function is found to be
+ 
+ $$H(s) = \frac{1}{{(RC)}^2} \frac{1}{s^2 + 3s/RC + (1/RC)^2}$$
+ 
+ With $R = 1000\Omega$ and $C = 1 \mu F$ as before, we get what we want. 
+
+$$|H(j\omega)| = \frac{1}{\sqrt{9*10^{-6}\omega^2 + 1 - 2*10^{-3}\omega^2+ 10^{-6}\omega^4}} $$
+ 
+Theoretically we can get the bode plot by 
+
+$$G_{dB} = -10 \log (9*10^{-6}\omega^2 + 1 - 2*10^{-3}\omega^2+ 10^{-6}\omega^4) $$
+
+so for small frequencies, we get 0dB and for high frequencies, the ${\omega^4}$ dominates, and we get a -40dB/dec slope.
+ 
+ 
+Part b.
+
+Same as a but now two real zeros at $\omega = 0$
+
+So then this can be created by swapping the capacitors and resistors as in diagram 3b. The calculation is similar to above, we get 
+
+ $$H(s) =  \frac{s^2}{s^2 + 3s*10^{3} + 10^6}$$
+ 
+ $$G_{dB} = 40 \log (\omega) -10 \log (10^{12} - 2*10^{6}\omega^2+\omega^4) $$
+
+For very small frequencies, we have a slope of 40dB/dec. When frequency is large, it flattens out again at 0dB.
+
+2nd-order transfer function synthesis - II 
+
+Part a. 
+
+We want poles at $-1.225*10^3, -5.442*10^3 rad/s$, $H(0) = 1$
+
+Putting this together, we have 
+
+$$H(s) = \frac{6.67*10^6}{s^2+6.67*10^3s + 6.67*10^6}$$
+
+This can be accomplished via diagram 4a.
+
+Taking the voltage across the capacitor, we have 
+
+$$H(s) = \frac{1/LC}{s^2 + s*R_T/L+1/LC}$$
+
+With the values in the diagram, we get what we want. 
+
+ $$G_{dB} = 20 \log (6.67 *10^6) - 10 \log ((4.45*10^{13})+\omega^2(3.1*10^7)+\omega^4)$$
+ 
+ So for low frequencies, we have 0dB, and then it transitions to a -40dB/dec slope
+ 
+
+Part b.
+
+We want poles at $s = -1.67*10^3 \pm j1.97*10^3 rad/s$, and a zero at $s=0$, and $H(\infty) = 0$
+
+Putting this together, we have
+
+$$H(s) = \frac{6.67*10^6s}{s^2+3.33*10^3s+6.67^10^6}$$
+
+Using diagram 4b, we get the following transfer function:
+
+$$H(s) = \frac{R/Ls}{s^2+R_T/Ls + 1/LC}$$
+
+Then with the values in diagram 4b, we have a similar result. However, since our inductor value is fixed at 150mH, and it has greater internal resistance than $150\Omega$, we change our resistor value so that $R_T$ is still constant. This way our bode plot will be shifted vertically.
+
+ $$G_{dB} = 20 \log (2.33 *10^3\omega) - 10 \log (\omega^4-2.25*10^6\omega^2+4.45*10^{13}) )$$
+ 
+ So for low frequencies it has an increase of 20dB/dec, then it peaks out and then it starts to decrease by 20dB/dec
+ 
+ Part c.
+ 
+ We want 2 poles at $s = -2.582*10^3$ and two zeros, one  at $s = 0$, and $H(\infty) = 1$
+ 
+ Using diagram 4c, we have the following transfer function
+ 
+ $$H(s) = \frac{s^2+s*R_L/L}{s^2+s*R_T/L+1/LC}$$
+ 
+So then the values listed in 4c satisfy the above conditions. 
+
+ $$G_{dB} = 10 \log (3*10^6\omega^2 +\omega^4) - 20 \log (\omega^2 + 6.67*10^6 )$$
+
+So then it will increase by 40dB/dec until it flattens out.
+ 
+
+
+
+\vspace{10cm}
+
+
+The probability that exactly one node transmits at a given time is
+
+$$P_{trans} = Np*(1-p)^{N-1}$$
+
+So then let X be the number of consecutive unproductive slots (just after a productive slot and just before a productive slot). This occurs either when none transmission, or a collision occurs. I.e. X=0 iff exactly one node transmitted, and it follows that
+
+$$P(X = 0) = P_{trans}$$
+$$P(X = 1) = (1-P_{trans})P_{trans}$$
+$$P(X = c) = (1-P_{trans})^{c}P_{trans} =  (1-P_{trans})^{c-1} (1-P_{trans})P_{trans}$$
+
+So X a geometric random variable scaled by $(1-P_{trans}) $.
+
+$$E(X)  = (1-P_{trans}) / (P_{trans}) $$
+
+$$E(X)  = \frac{1}{(Np*(1-p)^{N-1})} - 1 $$
+
+And the efficiency, e, is 
+
+$$e = k/(k+E(X)) = \frac{k}{k+ \frac{1}{(Np*(1-p)^{N-1})} - 1 } $$
+
+To maximise e, we want to minimise the denominator, which means maximising $P_{trans}$
+
+$$\frac{d}{dp} P_{trans} = N(1-p)^{N-1} - N(N-1)p (1-p)^{N-2} $$
+
+$$ = N(1-p)^{N-2} ( (1-p) - p(N-1) ) = N(1-p)^{N-2} ( 1- pN ) = 0 $$ 
+
+Since N is fixed, $p = 1/N$ maximises the efficiency e.
+
+
+For the Parallel RLC Circuit, we first note that the circuit is indeed parallel by source transforming the resistor and voltage source in series to be a current source and resistor in parallel. Now analysis of the circuit indicates that
+
+$$\omega_0 = \sqrt{\frac{1}{LC} - {(\frac{R_L}{R})}^2} $$
+
+$$\omega_{max} = \sqrt{(x -  {(\frac{R_L}{R})}^2} $$
+
+$$x = \sqrt{(a+b)}$$
+
+$$a= \frac{1}{(LC)^2}(1+\frac{2R_L}{R}) $$
+
+$$b= {(\frac{R_L}{R})}^2 (\frac{2}{LC})$$
+
+$$Q = R \sqrt{\frac{C}{L}}$$
+
+However, Q does not account for internal resistance. 
+
+
+
+For our RLC circuit,  we have that current is 
+
+$$I = \frac{V_s}{\sqrt{ (R+R_L)^2 + (X_C - X_L)^2 }}$$
+
+Therefore it is maximised at  
+
+$$X_C = X_L$$
+
+$$1/(\omega C) = L\omega$$
+
+$$\omega = \sqrt{\frac{1}{CL}} = \omega_0$$
+
+Therefore, the maximum values of $V_R, V_C, V_L$
+
+occur at $\omega_R = \omega_0, \omega_C = \omega_0 \alpha, \omega_L  = \omega_0 / \alpha$, respectively. Where 
+
+$$ \omega_0 = \sqrt{\frac{1}{CL}} $$
+
+$$\alpha = \sqrt{1 - \frac{(R+R_L)^2C}{2L} }$$
+
+The quality factor, Q can be expressed as: 
+
+$$Q = \frac{X_L}{R+R_L} = \frac{L}{(R+R_L)\sqrt{LC}} = \frac{1}{R+R_L}\sqrt{\frac{L}{C}}$$
+
+ 
+\vspace{10cm}
+
+
+The number of packets sent in one period is 
+
+$$\frac{W}{2} + (\frac{W}{2} + 1) +  (\frac{W}{2} + 2) + ... + W = \sum_{j=0}^{W/2}( \frac{W}{2} + j) =  (\frac{W}{2}) (\frac{W}{2}+1) +  (\frac{W}{2}) (\frac{W}{2} + 1)/2  $$
+$$ =  \frac{W^2}{4} + \frac{W}{2}+ \frac{W^2}{8}) +\frac{W}{4} =  \frac{3W^2}{8} + \frac{3W}{4}$$ 
+
+Since we lose 1 packet each period, the loss rate is
+
+$$ L = \frac{1}{\frac{3W^2}{8} + \frac{3W}{4}} $$
+
+Solving for W 
+
+$$ W^2 + 2W - \frac{8}{3L} = 0 $$
+
+In the limit of $W \gg 2$, i.e. $W + 2 \approx W$ we get 
+
+$$ W \approx \sqrt{\frac{8}{3L}} $$
+
+Then 
+
+$$rate = 3W/4 \approx \frac{1.22}{\sqrt{L}}$$
+
+
+For circuit 5: 
+
+$$\frac{V_o}{V_{in}} = \frac{j \omega L}{j \omega L + R} = \frac{1}{1 + R/j \omega L} =  \frac{1}{1 - j \omega_0/ \omega} =\frac{1}{1 - j f_0/ f}  $$
+
+Where $ \omega_0 = R/L$, 
+
+$$G = \frac{1}{\sqrt{1 + f_0^2/f^2}}$$
+
+$$G_{dB} = -10 \log (1 + f_0^2/f^2)$$
+
+$$\phi = \tan ^{-1} (f_0/f) $$
+
+For circuit 6: 
+
+
+$$\frac{V_o}{V_{in}} = \frac{R}{j \omega L + R} = \frac{1}{1 + j \omega L/R} =  \frac{1}{1 + j \omega/ \omega_0} =\frac{1}{1 +j f/ f_0}  $$
+
+$$G = \frac{1}{\sqrt{1 + f^2/f^2_0}}$$
+
+$$G_{dB} = -10 \log (1 + f^2/f^2_0)$$
+
+$$\phi = \tan ^{-1} (-f/f_0) = - \tan ^{-1} (f/f_0) $$
+
+
+From our measured values, to get Gain we simply divide the peak voltages and to get $\phi$ we can take the difference in time (from peak of $V_1$ to peak of $V_2$) multiplied by $\omega$
+
+
+
+
+For circuit 3:
+
+$$\frac{V_o}{V_{in}} = \frac{1/j \omega C}{1/j \omega C + R} = \frac{1}{1 + j \omega C R} =  \frac{1}{1 + j \omega/ \omega_0} =\frac{1}{1 + j f/ f_0}  $$
+
+Where $ \omega_0 = 1/CR$, Recalling $f_0 = 2\pi \omega_0  $ Therefore the Gain is
+
+$$G = \frac{1}{\sqrt{1 + f^2/f^2_0}}$$
+
+$$G_{dB} = -10 \log (1 + f^2/f^2_0)$$
+
+Thus, the angle $\phi$ is 
+
+$$\phi = \tan ^{-1} (-f/f_0) = - \tan ^{-1} (f/f_0) $$
+
+For circuit 4:
+
+$$\frac{V_o}{V_{in}} = \frac{R}{1/j \omega C + R} = \frac{1}{1 - j/ (\omega C R)} =  \frac{1}{1 - j f_0/f}$$
+
+$$G = \frac{1}{\sqrt{1 + f_0^2/f^2}}$$
+
+$$G_{dB} = -10 \log (1 + f_0^2/f^2)$$
+
+$$\phi = \tan ^{-1} (f_0/f) $$
+
+$4\pm0.2$ divided by $8\pm0.3$ yields $0.5\pm0.03125$
+The uncertainty is: $$0.5*\sqrt{(\frac{0.2}{4})^2+(\frac{0.0046875}{0.125})^2}$$ 
+ So then $(4\pm0.2)*(0.125\pm0.0046875)$ is equal to $0.5\pm0.03125$
+
+
+
+
+a. To send just a header it will take (d + h/b) because this is the propagation delay plus the delay because of transmission. So the handshake will take 2(d+h/b). The body and all 5 bin files behave the same. However, we will need a reqeuest for each (d+h/b)*6. Furthermore, since they take 2 TCP packets each, each will take $(d+2*\frac{h+p}{b})$ to send. So in total we have
+
+$$7*(d+\frac{h}{b}) +  6*(d+2*\frac{h+p}{b})$$
+
+b. The handshake will still take 2(d+h/b) each time, but we only need 2 handshakes. One for the body and one for the 5 bin files. For the body (or 5 bin files), it will take d+h/b as a request plus d+2*(h+p)/b as a response.  In total, this is
+
+$$4*(d+\frac{h}{b}) +  2*(d+2*\frac{h+p}{b})$$
+
+The From: in the mail message is different it is not part of the SMTP handshaking protocol. They are only part of the mail message. MAIL FROM: in the SMTP is part of the protocol, and the MAIL FROM: tells the reciever that the actual mail message is on its way.  
+
+a. In theory I believe it is possible. In theory, with very accurate time measurements, the time it takes to access website W will be shorter if it is cached in local DNS. To use this information, record the time it takes to access website W, call it $T_0$. Now access the website again, and call this time $T_1$. If $T_1 = T_0$ this means the website W was already cached in the local DNS server. If the time $T_1 < T_0$, then the website was Not cached in website W. However, in reality, there are other delays and so this may not be possible (Accessing W even after it is cached may take longer or shorter because of traffic volume and other stuff)
+
+b. Since you have access to the cache, just run a script that checks the cache every X seconds. Then if website W was in the cache, add 1 to it's respective entry in an array. After some time (100*X or 1000*X), check the array and then see. Whichever entries have the highest number are probably the most accessed websites.
+
+
+
+
+The web server authenticates the user and then checks their database for the particular user's details. This is the most secure as it can only change if the company changes this data. Second to this, there are cookies that are stored on the user's computer. These often contain login info and some information that does not need to be secure (e.g. items in their cart [that they have not bought yet])
+
+
+
+For any of the requests, the DNS cost will take $\sum_{j=1}^n RTT_j $. 
+For a, we need 2 $RTT_0$ to get the base html, then an extra 2 per object. In total this is 2+2*11 = $24RTT_0$
+Adding this to the DNS cost, the final answer is
+
+$$a.) 24RTT_0 + \sum_{j=1}^n RTT_j $$
+
+b. Now instead of an extra 2 per object, we can do the first 5 objects in 2 $RTT_0$, similarly, the next group of 5 objects takes another 2, and the last object another 2. In total,
+
+$$b.) 8 RTT_0 + \sum_{j=1}^n RTT_j $$
+
+c. For persistent, we need 1 for the initial handshake, and then 1 for the base, and another 1 per object. In total, this is
+
+$$c.) 13 RTT_0 + \sum_{j=1}^n RTT_j $$
+
+d. This is similar to c but now we need 1 for all objects instead of 1 for each object.
+
+$$d.) 3 RTT_0 + \sum_{j=1}^n RTT_j $$
+
+
+
+We have a link speed of 1Gbps and we have 1TB of data, so the time this would take is 50*1000*8Gb/1Gbps = 400,000s =  111hours. Since this is more than one day's worth of time, it is better to use the overnight delivery.
+
+
+
+a. It takes 120seconds (10*12) for all 10 cars (whole caravan) to get through the first toll booth. However, at this time, the cars are all equally spaced by 12s*100km/hr = 0.33m  (Or 12 seconds worth of travel). Because of this, by the time the first car gets to the 2nd toll booth, it takes 12 seconds for the next car to reach it, so the next car won't have to wait in a line (because car 1 will be done by then). This means there is no more queueing time. So for the last packet to get to the end, it will take 108 seconds in queue + 12*3 seconds being served at each toll booth + 150km/(100km/hr)*3600s/hr = 5544seconds.
+
+b. Now with 8 cars, the only difference is the queueing time is now 12*7=84 instead of 12*9=108, so subtract 24 from the above answer and we get the time = 5520seconds
+
+
+a. Since each packet has length L and the link has transmission rate R, each packet takes L/R seconds to transmit, this means packet 2 must wait L/R seconds in queue, packet 3 must wait 2L/R seconds in queue... packet k waits (k-1)L/R seconds in queue. For N packets, the average delay is
+
+$$\frac{1}{N}\sum_{j=1}^{N} (j-1) \frac{L}{R} = \frac{L (N-1)}{2R}$$
+
+b. N packets arrive every LN/R seconds, which is exactly the time it takes for all N packets to be transmitted. Therefore, the new N packets will be the only packets in the queue. This means the system is periodic, so the average time of any packet is the same as the average time of N packets (part a.) So the answer is still the same, the average delay is:
+
+$$\frac{L (N-1)}{2R}$$
+
+
+a. We have 3000Kbps link and each user takes 150Kbps, so we can support 20 users ($20*150Kbps = 3000Kbps$)
+
+b. Since each user transmits independently, this is given in the problem as p = 0.2.
+
+c. Let X = Bin(100,  0.2).  It is clear that we want P(X = n)
+
+$$P(X = n) = {100 \choose n}(0.2)^n (0.8)^{100-n} $$
+
+d. This is just P(X > 20) (Plugged into wolfram alpha)
+
+$$ P(X > 20) = \sum_{j=21}^{100} {100 \choose j}(0.2)^j (0.8)^{100-j} \approx 0.44  $$ 
+
+000000000
+
+Let's analyze the net force on an arbitrary object floating in a fluid at rest. The object has volume $V_s$ below the liquid, volume $V_a$ above the water (Therefore $V = V_a + V_s$), and is exposed to air pressure $P_{atm}$ above. It also has uniform density $\rho_0$
+
+The force by gravity is simply $\vec{F}_{grav} = m\vec{g}$
+
+Where m is given by $V * \rho_0$, and $\vec{g} = -|g| \hat{z}$
+
+The other force acting on the object is the force by pressure- the buoyant force. This force can be acquired by taking the sum of all the forces on infinitesimal portions of the surface area of the object
+
+$$\vec{F}_{b} = \int_{\partial V} -{P}\hat{n} dS$$
+
+Where $\partial V$ represents the surface of the object. Note that it is negative as the pressure acts in the direction opposite the normal vector of the surface, hence it acts in the $-\hat{n}$ direction The Pressure at these points varies, but it is known that for values $z > 0, {P} = P_{atm}$ . Underneath the liquid ($z < 0$), let's represent the pressure as a function of position ($P_s(\vec{r})$)
+
+So 
+
+\begin{equation*}
+P(\vec{r}) = P(x, y, z) =
+\begin{cases}
+P_{atm} & \text{if $z\ge 0$}\\
+P_s(x, y, z) & \text{if $z\le 0$}
+\end{cases}
+\end{equation*}
+
+Where $P_s$ is unknown. 
+
+(With $e_i$ being the unit column vector with a 1 in the 'i'th row (and 0's elsewhere))
+By noting that pressure at a point will be constant in all directions ($P\cdot e_i = P\cdot e_j$ ), $(\vec{P} = P(e_1 + e_2 + e_3))$  we can write:
+
+
+$$\vec{F}_{b} = \int_{V} -div(\vec{P})*\hat{P} dV$$
+
+Via divergence theorem. With $\hat{P}$ giving the direction, to be determined later.
+
+The net force on the object is therefore
+
+$$\vec{F}_{net} =  - V \rho_0|g| \hat{z} + \int_{V} -div(\vec{P})*\hat{P}  dV $$
+
+\vspace{2.9cm}
+
+\textbf{Case 1:} First, let's consider what would happen if the fluid is incompressible. We can use the incompressible Euler equations here. Noting that the fluid is at rest ($\vec{u} = 0$), we get the following:
+
+$$\frac{\bigtriangledown P_s}{\rho} = \vec{g}$$
+
+This can be solved, as we know the pressure on the object from the liquid and atmosphere are the same where the surface of the water meets the boundary of the object- $P(x, y, 0) = P_{atm}$. 
+
+Expanding out the differential equation into components, ($P_i$ = 'i' component of P, with $P = \sum P_i$
+
+$(P_x)' = 0$
+
+$(P_y)' = 0$
+
+$(P_z)' = -|g|\rho$
+
+Then
+
+$P_x = c_x$
+
+$P_x = c_y$
+
+$P_z = -|g|\rho*z + c_z$
+
+So then 
+
+$P = c_x + c_y + c_z -|g|\rho*z = C - |g|\rho*z$
+
+By the initial condition, $C = P_{atm}$. Note that if we look at any cross section of the object (in the xy plane), The pressure is constant. This means that the force by the pressure is only in the z direction. $(\hat{P} = \hat{z})$
+
+So therefore we have the net force is
+
+$$\vec{F}_{net} =  - V \rho_0|g| \hat{z} + \int_{V} -div(\vec{P})*\hat{z}  dV $$
+
+With 
+
+\begin{equation*}
+P(\vec{r}) = P(x, y, z) =
+\begin{cases}
+P_{atm} & \text{if $z\ge 0$}\\
+P_{atm} - |g|\rho*z & \text{if $z\le 0$}
+\end{cases}
+\end{equation*}
+
+Since $ \frac{\partial P}{\partial x_i}  = 0$ (for $x_i = x, y, z$) when $z \ge 0$, and only the derivative of the $e_3$ component gives a nonzero value, the integral simplifies to:
+
+$$\vec{F}_{net} =  - V \rho_0|g| \hat{z} + \int_{V_s} |g|\rho\hat{z} dV $$
+
+$$\vec{F}_{net} =  - V \rho_0|g| \hat{z} + V_s|g|\rho \hat{z}$$
+
+\vspace{2.9cm}
+
+\textbf{Case 2}  Now let's consider the case where the fluid has equation of state $P(\rho) = c^2\rho + P_0$
+for constants c and $P_0$, where the object is a vertical cylinder of radius r with $h_s$ the
+submerged depth and $h_a$ the height of cylinder in the air.
+
+Since the fluid is compressible, we need to use the compressible Euler equations, given $\vec{u} = 0$: 
+
+$$\rho_t = 0$$
+
+$$\frac{\bigtriangledown P_s}{\rho} = \vec{g}$$
+
+The first equation tell us that the density is a constant with time. 
+
+$$\rho = f(x, y, z)$$
+
+By the second equation, 
+
+$$\frac{\bigtriangledown P_s}{\rho} = \vec{g}$$
+
+$$\frac{\bigtriangledown (c^2\rho + P_0)}{\rho} = \vec{g}$$
+
+$$c^2\frac{\bigtriangledown \rho}{\rho} = \vec{g}$$
+
+So then in components, 
+
+$(\rho_x)' = 0$
+
+$(\rho_y)' = 0$
+
+$(\rho_z)' = -|g|\rho_z/c^2 $
+
+So
+
+$$\rho = -Ae^{|g|z/c^2} + B $$
+
+$$P_s = c^2(-Ae^{|g|z/c^2} + B) + P_0$$
+
+$$P_s = -Ae^{|g|z/c^2} + P_0$$
+
+The initial condition here is  $P_s(x, y, 0) = P_{atm}$
+
+So $$P_s = (P_{atm}-P_0)e^{|g|z/c^2} + P_0$$
+
+Again, the pressure only depends on z, therefore any cross section in the xy plane with have 0 net pressure in the x and y directions. 
+
+The net force is:
+
+$$\vec{F}_{net} =  - V \rho_0|g| \hat{z} + \int_{V} -div(\vec{P})*\hat{z}  dV $$
+
+We only need to integrate over the submerged surface, as in the air P is constant so div(P) = 0.
+
+$$\vec{F}_{net} =  - 2\pi r^2(h_a + h_s) \rho_0|g| \hat{z} + \int_{V_s} -\frac{(P_{atm}-P_0)|g|}{c^2}e^{|g|z/c^2}*\hat{z}  dV $$
+
+$$\vec{F}_{net} =  - 2\pi r^2(h_a + h_s) \rho_0|g| \hat{z} -\frac{(P_{atm}-P_0)|g|}{c^2} \int_{V_s} e^{|g|z/c^2}* dV\hat{z}  $$
+
+Since $dV = 2 \pi r^2 dz$
+
+$$\vec{F}_{net} =  - 2\pi r^2(h_a + h_s) \rho_0|g| \hat{z} -2\pi r^2\frac{(P_{atm}-P_0)|g|}{c^2} \int_{-h_s}^0 e^{|g|z/c^2}* dz\hat{z}  $$
+
+$$\vec{F}_{net} =  -2 \pi r^2(h_a + h_s) \rho_0|g| \hat{z} -2\pi r^2(P_{atm}-P_0) [1 - e^{-|g|h_s/c^2}]\hat{z}  $$
+
+
+
+
+
+
+
+
+\end{document}

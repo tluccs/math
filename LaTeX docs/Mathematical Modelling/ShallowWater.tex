@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+Problem 14
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+----
+
+Consider an incompressible, inviscid, irrotational flow of a fluid. Suppose that the fluid flows over a flat surface z = 0 where its height is given by
+
+ h(x, t). The length scales are L (horizontally) and A (vertically), and if
+
+$\vec{u}(x, z, t) = (u_1, u_2)$ is the velocity, ($u_1$ is the x velocity, $u_2$ is the z velocity) then $u_1 \approx \sqrt{gA}$  
+
+By irrotational and the Euler equations, 
+
+$$\vec{\bigtriangledown} \times \vec{u} = \vec{0} $$
+
+$$\vec{\bigtriangledown} \cdot \vec{u} = 0 $$
+
+$$\vec{u}_t + \vec{\bigtriangledown} P/{\rho}  = \vec{g} $$
+
+From the second equation, 
+
+$u_{1x} = 0$ (x velocity has no x dependence)
+
+$u_{2z} = 0$ (z velocity has no z dependence) 
+
+Now going to the first equation, 
+
+$u_{2x} = u_{1z}$
+
+Writing out the third equation in component form, 
+
+$${u}_{1t} +  P_x/{\rho}  = 0   $$
+
+$${u}_{2t} +  P_z/{\rho}  = -g$$
+
+To non-dimensionalise this model, 
+
+$x = Lx^*$ (The overall horizontal scale)
+
+$z = Az^*$ (The overall height scale)
+
+$u_1 = \sqrt{gA} u_1^*$  (Since that is what it is comparable to)
+
+$u_2 = \sqrt{gA} u_2^*$  
+
+$P = \bar{P} P^*$  
+
+$t = \bar{t} t^*$  
+
+$h =  \bar{h}h^*$  
+
+Then: 
+
+$$ \frac{\sqrt{gA}}{\bar{t}} {u^*}_{1t^*} +  \frac{\bar{P}}{L \rho}P^*_{x^*}  = 0   $$
+
+$$ \frac{\sqrt{gA}} {\bar{t}} {u^*}_{2t^*} +  \frac{\bar{P}}{A \rho}P^*_{z^*}  = -g   $$
+
+From the first of these two: 
+
+$$ {u^*}_{1t^*} +  \frac{\bar{P}\bar{t}}{L \rho \sqrt{gA}}P^*_{x^*}  = 0   $$
+
+From the second: 
+
+$$ {u^*}_{2t^*} +  \frac{\bar{P}\bar{t}}{A \rho \sqrt{gA}}P^*_{z^*}  = - \frac{g \bar{t}}{ \sqrt{gA}}   $$
+
+So letting
+
+$$\frac{\bar{P}\bar{t}}{L \rho \sqrt{gA}} = 1$$
+
+From the right hand side of the second equation, it makes sense to let  
+
+$$\bar{t} = \frac{L}{\sqrt{gA}}$$
+
+Which gets rid of g, and so this means 
+
+$$\bar{P} = {\rho g A}$$
+
+By this, 
+
+$$ {u^*}_{1t^*} +  P^*_{x^*}  = 0   $$
+
+$$ {u^*}_{2t^*} +  \frac{L}{A}P^*_{z^*}  = - \frac{L}{A}   $$
+
+Now if we let $\epsilon = A/L$ as $A << L$, then We can make the ansantz that 
+
+$P^* \approx P_0 + P_1 \epsilon + ... $ 
+
+$u_{2}^* \approx U_{2,0} + U_{2,1} \epsilon + ... $ 
+
+$u_{1}^* \approx U_{1,0} + U_{1,1} \epsilon + ... $ 
+
+Taking all the $\epsilon^{-1}$ terms from the 2nd equation, we get
+
+$(P_0)_{z^*} = -1$, so $P^* = C(x^*, t^*)-z^* $ (To order O(1)), With the initial condition that $P(z = h(x, t)) = P_{atm}$ so $P^* = P_{atm}+(h^*(x^*,t^*)-z^*) $ at leading order. [Since $\epsilon$ is small, the actual solution is the leading order solution plus perturbations on the order of $\epsilon$ and higher. However, this is negligible because $\epsilon$ is so small]
+
+For all the terms without $\epsilon$ in the 2nd equation, we get
+
+$(U_{2,0})_{t^*} = 0$, so ${u^*}_{2} = C(x^*)$ [as ${u^*}_{2z^*} = 0$, it can only be a function of x]
+
+Going back to $u_{2x} = u_{1z}$, nondimensionalising yields
+
+$${u^*}_{1z^*} = \frac{A}{L} {u^*}_{2x^*} =  \epsilon {u^*}_{2x^*}$$
+
+Furthermore, we have that 
+
+$$({u^*}_{2x^*})_{z^*} = ({u^*}_{2z^*})_{x^*} = 0$$
+
+$$({u^*}_{2x^*})_{t^*} = ({u^*}_{2t^*})_{x^*} = 0$$
+
+$$ \frac{A}{L}  ({u^*}_{2x^*})_{x^*} = ({u^*}_{1z^*})_{x^*} =  ({u^*}_{1x^*})_{z^*} = 0$$
+
+Therefore,  ${u^*}_{2x^*} = c$ for some constant c. 
+
+So 
+
+$${u^*}_{1z^*} = \epsilon *c$$
+
+Since $ {u^*}_{1z^*}$ is of the order $\epsilon$, at leading order, it is then 0. 
+
+It is also true that the flux in minus the flux out (left side) should give the rate of change of the volume in the region, so
+
+$$\int_0^{h^*} u^*_1(a, z^*, t^*) dz^* - \int_0^{h^*} u^*_1(b, z^*, t^*) dz^* = \frac{\partial}{\partial t^*}\int_a^b h^* dx^* $$ 
+
+by the fundamental theorem of calculus, the left side is
+
+$$\int_0^{h^*} u^*_1(a, z^*, t^*) dz^* - \int_0^{h^*} u^*_1(b, z^*, t^*) dz^* =-\int_a^b \frac{\partial}{\partial x^*} \int_0^{h^*} u^*_1(x^*, z^*, t^*) dz^* dx^*  $$ 
+
+So then
+
+$$-\int_a^b \frac{\partial}{\partial x^*} \int_0^{h^*} u^*_1(x^*, z^*, t^*) dz^* dx^* = \frac{\partial}{\partial t^*}\int_a^b h^* dx^* $$
+
+$$\int_a^b ((\frac{\partial}{\partial x^*} \int_0^{h^*} u^*_1(x^*, z^*, t^*) dz^*) + h^*_{t^*} )dx^* = 0 $$
+
+As $u_{1z^*} = 0, u_1 = f(x^*, t^*)$:
+
+$$(\frac{\partial}{\partial x^*} \int_0^{h^*} u^*_1(x^*, z^*, t^*) dz^*) + h^*_{t^*}  = 0 $$
+
+$$\frac{\partial}{\partial x^*} (h^*u^*_1(x^*, z^*, t^*)) + h^*_{t^*}  = 0 $$
+
+$$ (h^*u^*_1)_{x^*} + h^*_{t^*}  = 0 $$
+
+This is the first non-dimensional shallow water equation.
+
+
+To get the second, go back to:
+
+$$ {u^*}_{1t^*} +  P^*_{x^*}  = 0   $$
+
+Note that $P^*_{x^*} = {h^*}_{x^*}$
+
+$$ {u^*}_{1t^*} +  {h^*}_{x^*}  = 0   $$
+
+$$ h^**{u^*}_{1t^*} +  h^**{h^*}_{x^*}  = 0   $$
+
+Since $(h^*{u^*}_1)_{t^*} = h^*_t u^*_1 + {u^*}_{1t} h^*$
+
+$$ (h^*{u^*}_1)_{t^*} - h^*_t u^*_1   +  h^**{h^*}_{x^*}  = 0   $$
+
+$$ (h^*{u^*}_1)_{t^*} + (h^*u^*_1)_{x^*} u^*_1   +  h^**{h^*}_{x^*}  = 0   $$
+
+Since ${u^*}_{1x} = 0$, bring it inside the derivative
+
+$$ (h^*{u^*}_1)_{t^*} + (h^* (u^*_1)^2)_x   + h^**{h^*}_{x^*}  = 0   $$
+
+Now note that $h^**{h^*}_{x^*} = ({\frac{1}{2}(h^*)^2})_{x^*}$
+
+$$ (h^*{u^*}_1)_{t^*} + (h^* (u^*_1)^2)_x   + ({\frac{1}{2}(h^*)^2})_{x^*}  = 0   $$
+
+$$ (h^*{u^*}_1)_{t^*} + (h^* (u^*_1)^2+{\frac{1}{2}(h^*)^2})_{x^*}  = 0   $$
+
+Giving the second shallow water equation in non-dimensional form
+
+\vspace{13cm}
+
+asds
+
+By loop analysis, we get the following:
+
+$$i = i_L + i_C$$
+$$V_O = Q/C = V_{in} -iR$$
+$$Q/C = L \frac{di_L}{dt} + R_L i_L$$
+
+With some math, we get the following second order equation;
+
+$$\frac{d^2i_L}{dt^2} + \frac{L+RCR_L}{RLC} \frac{di_L}{dt} + \frac{R_L+R}{RLC} i_L = \frac{V_{in}}{RLC}$$
+
+Therefore we take $\alpha$ and $\omega$ as: 
+$$\alpha =  \frac{L+RCR_L}{2RLC} = 3129/s$$
+$$\omega_0 = \sqrt{\frac{R_L+R}{RLC}} = 6025/s$$ 
+$$\omega =  5149/s$$
+$$\zeta = 0.52$$
+
+As the particular solution is simply $V_{in}/(R+R_L)$, The solution is then
+
+$$i_L = e^{-3129t} [A\cos(5149t)+B\sin(5149t)] + 8*10^{-4}$$
+
+And the initial conditions are that $i_L(0-) = i_L(0+) = 0$, and given that $V_C(0-)  = V_C(0-) = 0$, we know
+
+$$\frac{di_L(0)}{dt} = \frac{V_C(0)  -R_Li_L(0)}{L }  = 0 $$
+
+$$i_L = (e^{-3129t} [-8\cos(5149t)-4.86\sin(5149t)] + 8)*10^{-4}$$
+
+$$V_O = L \frac{di_L}{dt} + R_L i_L$$
+
+$$V_O = 0.2(1-e^{-3129t}[cos(5149t)-3.62sin(5149t)]) $$
+
+\vspace{5cm}
+
+By KVL, we have
+
+$$\frac{di}{dt}*L + (R+R_L)i + \frac{Q}{C} i = V_{in}$$
+
+Differentiating, 
+
+$$\frac{d^2i}{dt^2} + \frac{R+R_L}{L}\frac{di}{dt} + \frac{i}{CL} = 0$$
+
+$$\alpha =  \frac{R+R_L}{2L} = 11466/s$$
+$$\omega_0 = \sqrt{\frac{1}{LC}} = 8165/s$$ 
+
+Since $\alpha$ is greater than $\omega_0$, it is overdamped and thus
+
+$$i = Ae^{-3301t}+Be^{-19631t}$$
+
+We know the initial conditions are that $i_L(0-) = 0 = i_L(0+) = i(0)$
+And since
+$V_C(0-) = 0 = V_C(0+)$, 
+$$\frac{di(0+)}{dt} = V_{in}/L = 6.67A/s$$
+
+$$i = 4*10^{-4} (e^{-3301t}-e^{-19631t} )$$
+
+$$V_C = V_{in}- \frac{di}{dt}*L - (R+R_L)i$$
+
+$$V_C = 1 - 1.20e^{-3301t}+.22e^{-19631t}$$
+
+
+
+\vspace{10cm}
+
+
+By KVL, we have
+
+$$\frac{di}{dt}*L + (R+R_L)i + \frac{Q}{C} i = V_{in}$$
+
+Differentiating, 
+
+$$\frac{d^2i}{dt^2} + \frac{R+R_L}{L}\frac{di}{dt} + \frac{i}{CL} = 0$$
+
+$$\alpha =  \frac{R+R_L}{2L} = 1160/s$$
+$$\omega_0 = \sqrt{\frac{1}{LC}} = 8165/s$$ 
+
+Since $\alpha$ is less than $\omega_0$, it is underdamped. 
+$\omega = \sqrt{\omega_0^2 -\alpha^2} = 8082/s$ 
+
+$$i = e^{-1106t}[A\cos(8082t)+B\sin(8082t)]]$$
+
+We know the initial conditions are that $i_L(0-) = 0 = i_L(0+) = i(0)$
+And since
+$V_C(0-) = 0 = V_C(0+)$, 
+$$\frac{di(0+)}{dt} = V_{in}/L = 6.67A/s$$
+
+$$i = 8.25*10^{-4} (e^{-1106t} \sin(8082t) )$$
+
+$$V_C = V_{in}- \frac{di}{dt}*L - (R+R_L)i$$
+
+$$V_C = 1  - e^{-1106t}[\cos(8082t)+0.15\sin(8082t)]$$
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+Problem 15
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+----
+
+Given that cars obey the principle: 
+
+$$u(x, t) = u_{max} (1 - \frac{\rho(x, t)}{\rho_{max}})$$
+
+To non-dimensionalise this model, 
+
+$u = \bar{u}v$ 
+
+$\rho = \bar{\rho}p$ 
+
+Then: 
+
+$$v(x, t) = \frac{u_{max}}{\bar{u}} (1 - \frac{p(x, t)\bar{\rho}}{\rho_{max}})$$
+
+
+By the inviscid burgers equation, 
+
+$$v_t + (\frac{1}{2} v^2)_x = 0$$
+
+$$(\frac{u_{max}}{\bar{u}} (1 - \frac{p(x, t)\bar{\rho}}{\rho_{max}}))_t + (\frac{1}{2} (\frac{u_{max}}{\bar{u}} (1 - \frac{p(x, t)\bar{\rho}}{\rho_{max}}))^2)_x = 0 $$
+
+Since constants are differentiated to 0, (and letting $ u_{max} \bar{\rho} = \rho_{max} \bar{u}$ )
+
+$$(-p)_t + (\frac{1}{2} (\frac{u_{max}}{\bar{u}} (1 - \frac{p\bar{\rho}}{\rho_{max}}))^2)_x = 0 $$
+
+$$(-p)_t + (\frac{1}{2} (-2p+p^2 \frac{\bar{\rho}}{\rho_{max}} ) )_x = 0 $$
+
+Letting ${\bar{\rho}}= 2{\rho_{max}} $
+
+$$(-p)_t + (-p+p^2)_x = 0 $$
+
+$$(p)_t + (p-p^2)_x = 0 $$
+
+Solving this with the constraint that 
+
+\begin{equation*}
+p(x, 0) = 
+\begin{cases}
+0 & \text{if $x < -1$}\\
+1 & \text{if $-1 < x < 0$}\\
+0 & \text{if $x > 0$} 
+\end{cases}
+\end{equation*}
+
+Which describes traffic building up at a red light (at x = 0) which becomes green at t = 0.
+
+Since
+
+$$(p)_t + (p-{p^2})_x = 0$$ 
+
+is nonlinear, let's use characteristics find a curve X(t) and then have solutions in the form p(X(t), t)
+
+Note that
+
+$$(p)_t + (1-2p)p_x= 0$$ 
+
+Then if we let X'(t) = (1-2p), ($X(t) = (1-2p)t$) then we have
+
+$$\frac{dp}{dt}(X(t), t) = p_t + (1-2p)p_x = 0$$
+
+And so
+
+$$p(x, t) = p(x-(1-2p)t, 0)$$
+
+
+
+But there is a shock now since the value does not match when x = 0 (from right we have p = 0, from left we have p = 1)
+
+So by rankine-hugoniot condition,
+
+$$s'(t) = \frac{[p-p^2]}{[p]}$$  
+
+since $p^- = 1$ and $p^+ = 0$, 
+
+$$s'(t) = \frac{0-(1-1^2)}{0-1} = 0$$
+
+$s(t) = 0$ as $s(0) = 0$ (where it originates)
+
+[This doesn't make much sense, the shock is 0 meaning that p = 1 for x < 0 and p = 0 for x > 0 but this is only true at t = 0. After this point, cars pass the x = 0 point and so the density should be positive. ]
+
+There is also a rarefaction with no values near x = -1 as to the left the curves are straight vertical lines and to the right they extend towards the right. In this case, the rarefaction begins at t = 0 as well, so we have
+
+$n = x/t, p(x, t) = r(n)$
+
+Since $$p_t = - \frac{x}{t^2} r'(n)$$ 
+
+$$p_x = \frac{1}{t} r'(n)$$
+
+Then the equation $$(p)_t + (1-2p)p_x= 0$$ 
+
+Can be written as
+
+$$- \frac{x}{t^2} r'(n) + (1-2p)\frac{1}{t} r'(n) = 0 $$
+
+Since r'(n) is not 0, 
+
+$$1 - 2p = n = \frac{x}{t}$$
+
+$$p = \frac{t - x }{2t}$$
+
+Where this solution is valid when $ -1 < x < -t$ (as x = -t, p = 1, corresponding to the curves already found)
+
+The rarefaction fans out solutions from x = -1 (left) with p = 0 at t = 0 and x = -1 (right) with p = 1 at t = 0
+
+From this, we have that
+
+\begin{equation*}
+p(x, t) = 
+\begin{cases}
+0 & \text{if $x < -1$}\\
+\frac{t - x }{2t} & \text{if $-1 < x < -t$}\\
+1 & \text{if $ -t < x < 0$}\\
+0 & \text{if $x > 0$} 
+\end{cases}
+\end{equation*}
+
+--------
+
+
+
+\vspace{2cm}
+
+Since it is a triangle wave, it's very symmetric and so we only need to take the RMS from 0 to T/4
+
+$f(x) = 4ax/T$ 
+
+ $f^2 = 16a^2x^2/T^2$ and so 
+
+$$RMS = \sqrt{4/T * \int^{T/4}_0 16a^2x^2/T^2 dt} = \sqrt{\frac{64a^2(T/4)^3}{3T^3}}$$ 
+$$RMS = a \sqrt{3}$$
+And $V_{pp} = 2a$, so 
+
+$$\frac{RMS}{V_{pp}} = \frac{\sqrt{3}}{2}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

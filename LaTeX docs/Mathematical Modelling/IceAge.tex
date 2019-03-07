@@ -1,0 +1,69 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 1
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+We will try to find the relative difference between two powers, $P_C$ - the highest input power at which the earth will freeze over, and $P_H$ - the lowest input power at which the earth will be completely covered in water. 
+
+To do this, we must first make a few assumptions:
+
+-The earth consists only of ice or water. 
+
+-At temperature $T=0^oC$ (or below), the earth is completely covered in ice. 
+
+-At temperature $T=20^oC$ (or above), the earth is completely filled in water.
+
+-Ice reflects 70\% of all radiation it is exposed to.
+
+-Water reflects 10\% of all radiation it is exposed to.
+
+-Due to a greenhouse effect, 50\% of all radiation reflected is re-absorbed.
+
+-Let $P$ denote the total power coming into the earth.
+
+-The earth's radius is $40,000km$
+
+Now, let's define $P_a(T)$ - the Power Absorbed by the earth (as a function of temperature, since temperature affects the composition of earth). We know $P$ is the total power coming, and that- depending on the composition of the earth- a certain part is reflected outward, let's call this $P_r(T)$. Furthermore, 50\% of the amount reflected is re-absorbed. 
+
+So $P_a(T) = P - P_r(T) + .5*P_r(T) = P - .5*P_r(T)$
+
+We know $P_r(T) = .7*P$ for $T \le 0$, as the earth will be entirely composed of ice at these temperatures. And for $T \ge 20$, $P_r(T) = .1*P$, as the earth will be entirely composed of water at these temperatures.
+
+Let's assume that $P_r(T)$ in between these regions is linear. This makes physical sense as the earth will be a mix of ice and water. Furthermore, $P_r(T)$ should be decreasing in this region. So for $0 < T < 20$, let 
+
+$P_r(T)=\frac{.7*P*(20-T)}{20} +\frac{.1*P*T}{20} = .7*P - \frac{.6*T}{20}$
+
+Now, by the Stefan-Boltzmann Law, the earth emits $P_e(T) = \sigma*\epsilon*(T+273)^4*4*\pi*r^2$ 
+
+Note that we multiple the amount by $4\pi r^2$ as that is the surface area of the earth.
+Furthermore, T is in Kelvin in this equation, so we convert from Celsius to Kelvin.
+$\sigma$ is simply the Stefan-Boltzmann constant.
+The emissivity of water and ice are .98 and .96 respectively, so for simplicity sake, let's take $\epsilon = .97$.
+Temperature is directly related to the energy of a system, and power is the rate of change of energy, so we can let $T'(T) = P_a(T) - P_e(T)$
+
+We know that for the input power $P_c$, we should have earth approach a state of pure ice (from any starting T in the range $0<T<20$)
+
+Hence, $T'(T) \le 0$ for all $0<T<20$ 
+
+In physical terms, no matter what starting Temperature (in the given range), for an input power $P_c$, the earth should get colder (T decreases, i.e. $T' < 0$) at least until $T = 0$. We will assume (but not prove) that if $T'(T) < 0$ at $T = 20$ for a input power $P_c$, then $T'(T) < 0$ for all $0 < T < 20$
+
+To solve for $P_c$, we let $T'(20)=0$ (choose the greatest possible value as this maximizes $P_a$, similar to why one would choose a worst case scenario. If it works in the worst case, it should work in all better cases), and find that
+
+$P_c=8.5*10^{18} W$
+
+The graphs (attached) confirm that $T'(T) < 0$ for all $0 < T < 20$. Furthermore, we know this must be the greatest possible value (to 2 significant figures) of $P_c$, as for any greater value, $T'(T)$ would be positive at values around $T=20$.
+
+$P_h$ can be found in a similar way, except that we set $T'(T)>0$ for all  $0 < T < 20$. The same reasoning applies as before, except that now the input power $P_h$ is the smallest such number. Solving $T'(0)=0$, we find that 
+
+$P_h=9.4*10^{18}W$
+
+The relative difference is therefore $\frac{P_h-P_c}{P_{average}}=0.1$
+
+
+
+\end{document}

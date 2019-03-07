@@ -1,0 +1,82 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 3
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+To sort n elements, a computer must make at least $\Omega $ comparisons, with 
+
+$$2^\Omega \ge n!$$
+
+I will try to show that 
+
+$$\Omega \ge O(n* log(n))$$
+
+by first showing
+
+$log(n!) = n*log(n) - n + \frac{1}{2} log(n) + O(1)  $
+
+First, expand out the factorial and use the rules of logarithmic addition to get
+
+$log(n!) = log(n*(n-1)*...*2*1) = \sum_{j=1}^n log(j)$
+
+Then, we can approximate the (Riemann) sum with $\delta t = 1$ as a right end point Riemann sum,
+
+$ \sum_{j=1}^n log(j) \approx \int_1^n log(x)dx + E_n$
+
+Where $E_n$ is our error term, we will get back to that.
+
+$\int_1^n log(x)dx = n*log(n) - n + 1$
+
+This is already pretty close to our result, as $O(1) = 1$
+
+Now we must prove our error term is actually $\frac{1}{2} log(n)$
+
+Let's use trapezoids to approximate the error. If we visualise the graph of $log(x)$, at any range (a, a+1) we can imagine a rectangle whose length is log(a+1) (so its side is above the graph in the range (a, a+1)). The trapezoid, on the other hand, has its slanted side always under the graph in the range (a, a+1)- it's not too hard to see as the derivative of log(x) is positive and the double derivative is negative, implying that log(x) is 'curved' (with curvature upward) and so it will always be greater than the straight line. 
+Furthermore, as x gets large, log(x) starts increasing at a very slow rate, at which the area of the trapezoid (on the region (a, a+1)) gets closer to the integral.
+
+Hence, it makes sense to say that the error is given by the portion of the rectangle above the line, approximately equal to the rectangle minus the trapezoid 
+
+$E_n =  \sum_{j=1}^n log(j) -  \sum_{j=1}^{n-1} \frac{(log(j)+log(j+1)}{2}$
+
+\vspace{0.5cm}
+
+$E_n = log(n) + \sum_{j=1}^{n-1} log(j) -  \sum_{j=1}^{n-1} \frac{log(j)+log(j+1)}{2}$
+
+\vspace{0.5cm}
+
+$E_n = log(n) + \sum_{j=1}^{n-1} \frac{log(j)-log(j+1)}{2}$
+
+\vspace{0.5cm}
+
+$E_n = log(n) + \frac{1}{2}*(log(1)-log(2)+log(2)-...-log(n-1)+log(n-1)-log(n))$
+
+\vspace{0.5cm}
+
+$$E_n = log(n) -\frac{1}{2}* log(n) = \frac{1}{2}*log(n)$$
+
+Our error does indeed equal the wanted result, proving 
+
+$log(n!) = n*log(n) - n + \frac{1}{2} log(n) + O(1)  $
+
+Now, we can show 
+
+$$\Omega \ge O(n* log(n))$$
+
+Starting with our original data, we know 
+
+$2^\Omega \ge n!$
+
+then
+
+$\Omega \ge log(n!)*\frac{1}{log(2)} = (n*log(n) - n + \frac{1}{2} log(n) + O(1))*\frac{1}{log(2)}$
+
+And the result follows immediately by definition
+
+$$\Omega \ge O(n*log(n))$$
+
+\end{document}

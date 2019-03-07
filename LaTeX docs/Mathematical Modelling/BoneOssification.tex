@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+Problem 13
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+----
+
+Suppose that osteoblasts secrete uncalcified bone matrix from  x = 0 at a constant
+rate, so that all parts of the matrix move at speed s > 0 (along the +x direction)
+Let?s suppose the crystals are uniformly deposited and spaced, have a spherical shape, and
+grow at a rate proportional to their surface area.
+
+From this, let's model the Volume (of a spherical crystal) as a function of x and t, V(x, t). With V' (the growth) being proportional to surface area 
+
+$$(V(x, t))' \propto 4\pi r^2$$ 
+
+Noting that $V(x,t) = 4/3 \pi r^3$, Then $V^{2/3} \propto r^2$
+
+Hence
+
+$$(V(x, t))' \propto V^{2/3}$$ 
+
+$$(V(x, t))' = c*V^{2/3}$$ 
+
+Where c is a constant. We can also model the position x as a function of t; $x(t) = st + x(0)$
+That is, the crystals move at a fixed speed s from their initial position x(0). 
+
+Now, by the chain rule, the left hand side is:
+
+$$V' = V_t t' + V_x x' = V_t + sV_x$$
+
+So now we have that 
+
+$$V_t + sV_x = cV^{2/3}$$
+
+to non-dimensionalise, 
+
+$V = v^*\bar{v}$
+$t = t^*\bar{t}$
+$x = x^*\bar{x}$
+
+Then:
+
+$$\frac{\bar{v}}{\bar{t}}v^*_{t^*} + \frac{\bar{v}s}{\bar{x}}v^*_{x^*} = c\bar{v}^{2/3}{v^*}^{2/3}$$
+
+Letting $\bar{x} = s\bar{t}$, $\bar{v} = (c\bar{t})^3$,
+
+$$v^*_{t^*} + \frac{\bar{t}s}{\bar{x}}v^*_{x^*} = c\frac{\bar{t}}{\bar{v}^{1/3}}{v^*}^{2/3}$$
+
+We obtain:
+
+$$v^*_{t^*} + v^*_{x^*} = {v^*}^{2/3}$$
+
+For convenience, I will omit the '*'s, since there will be no further non-dimensionalising or converting back to dimensional form
+
+Now to solve
+$$v_{t} + v_{x} = {v}^{2/3}$$
+
+To the constraints: $v(x, 0) = 0, v(0, t) = 1$
+
+First, let $x = x(\tau, \sigma)$, $t = t(\tau, \sigma)$, with $\sigma$ parametrizing the boundary. Then
+
+$$\frac{dv}{d\tau}= v_{x}\frac{\partial x}{\partial \tau} + v_{t}\frac{\partial t}{\partial \tau}$$
+
+If we let 
+
+$$\frac{\partial x}{\partial \tau} = \frac{\partial t}{\partial \tau} = 1$$
+
+Then 
+
+$$\frac{dv}{d\tau} = v^{2/3}$$
+
+This differential equation can be solved, to get
+
+$$v = \frac{(\tau+c)^3}{27}$$
+
+Now to convert back, $\sigma$ is the boundary, so 
+
+\begin{equation*}
+x(0, \sigma) = 
+\begin{cases}
+0 & \text{if $\sigma < 0$}\\
+\sigma & \text{if $\sigma > 0$}
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+t(0, \sigma) = 
+\begin{cases}
+-\sigma & \text{if $\sigma < 0$}\\
+0 & \text{if $\sigma > 0$}
+\end{cases}
+\end{equation*}
+
+Then we have that $x - t = \sigma$. Furthermore, since $\frac{\partial x}{\partial \tau} = 1$, $x = \tau + x(0, \sigma)$
+
+\begin{equation*}
+\tau = x - x(0, \sigma) = 
+\begin{cases}
+x -0 & \text{if $\sigma < 0$}\\
+x - \sigma & \text{if $\sigma > 0$}
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+\tau = 
+\begin{cases}
+x & \text{if $x < t$}\\
+t & \text{if $x > t$}
+\end{cases}
+\end{equation*}
+
+Then we have
+
+\begin{equation*}
+v(x,t) = 
+\begin{cases}
+{(x+c)^3}/{27} & \text{if $x < t$}\\
+{(t+c)^3}/{27} & \text{if $x > t$}
+\end{cases}
+\end{equation*}
+
+For the initial conditions, v(0, t) = 1  and v(x, 0) = 0, This means (as $x = 0 < t$ and $t = 0 < x$ )
+
+\begin{equation*}
+v(x,t) = 
+\begin{cases}
+{(x+3)^3}/{27} & \text{if $x < t$}\\
+{(t)^3}/{27} & \text{if $x > t$}
+\end{cases}
+\end{equation*}
+
+However, x > t means that we are trying to find the volume of a crystal where there is no matrix. So the only solution should be 
+
+$$v(x, t) = \frac{(x+3)^3}{27}$$
+
+\end{document}

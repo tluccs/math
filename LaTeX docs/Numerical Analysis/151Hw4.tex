@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+
+----
+
+1.  $f(x)$ defined on $[-1, 1]$ and $f \in C^4[-1,1]$
+
+a. If $h(x)$ is the interpolating polynomial at the points -1, 0, 1, then let
+
+$$L_{-1}(x) = \frac{(x-0)(x-1)}{(-1-0)(-1-1)} = \frac{x(x-1)}{2}$$
+
+$$L_{0}(x) = \frac{(x+1)(x-1)}{(0+1)(0-1)} = 1-x^2$$
+
+$$L_{1}(x) = \frac{(x-0)(x+1)}{(1-0)(1+1)} = \frac{x(x+1)}{2}$$
+
+$$h(x) = L_{-1}(x)f(-1) + L_0(x)f(0) + L_1(x)f(1)$$
+
+b. The error term can be given by
+
+$$E(x) = \frac{(x-1)(x)(x+1)}{6}f'''(\xi(x)), \xi(x) \in [-1, 1]$$
+
+By the interpolation formula
+
+c. 
+
+$$\int^1_{-1}h(x)dx = \int^1_{-1}h(x)L_{-1}(x)f(-1) + L_0(x)f(0) + L_1(x)f(1)dx $$
+
+$$= \left.\left[f(-1)(\frac{x^3}{6}-\frac{x^2}{4}) + f(0)(x-\frac{x^3}{3}) + f(1)(\frac{x^2}{4}+\frac{x^3}{6})\right] \right\rvert^1_{-1}$$
+
+$$= \frac{1}{3}(f(-1)+4f(0)+f(1))$$
+
+d. 
+
+Yes, it is true that 
+
+$$\int^1_{-1}h(x)dx = \int^1_{-1}f(x)dx$$ 
+
+If f is a polynomial of degree 2 or less. Note that in this case, f is the interpolating polynomial of $(-1, f(-1)), (0, f(0)), (1, f(1))$. Since $f$ and $h$ both interpolate these points, they must be the same polynomial since the Lagrange interpolating polynomial is unique. Therefore, their integrals must be the same. 
+
+e. 
+$$\int^1_{-1}E(x)dx = \int^1_{-1} \frac{(x-1)(x)(x+1)}{6}f'''(\xi(x))  dx$$
+
+However, note that if $f$ is of degree 2 or less, $f'''(x) = 0$. Therefore
+
+$$\int^1_{-1}E(x)dx = \int^1_{-1} \frac{(x-1)(x)(x+1)}{6}f'''(\xi(x))  dx = 0$$
+
+2. Given the following $x, f(x)$ pairs: (0,1), (1,2), (2,1), (3,2), (4,1)
+
+a. Use Simpsons rule at nodes 0, 2, 4 to calculate 
+
+$$\int^4_{0}f(x)dx$$
+
+$$= \frac{2}{3}(1+4*1+1) = 4$$
+
+b. Use Composite Simpsons rule at nodes 0, 1, 2, 3, 4 to calculate 
+
+$$\int^4_{0}f(x)dx = \int^2_{0}f(x)dx + \int^4_{2}f(x)dx$$
+
+$$= \frac{1}{3} (1+4*2+1 + 1+4*2+1 ) = \frac{20}{3}$$
+
+3. See python code 151Hw4p3.py
+
+
+\end{document}

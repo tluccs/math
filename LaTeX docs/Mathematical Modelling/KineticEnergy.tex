@@ -1,0 +1,46 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 5
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+Let's compare the relativistic and classical kinetic energies. We know the classical kinetic energy $K = \frac{1}{2}mv^2$.
+The relativistic, $K_r$ is
+
+$$K_r = mc^2(\frac{1}{\sqrt{1-v^2/c^2)}} - 1)$$
+
+We know the taylor series for 
+
+$$\frac{1}{\sqrt{1+x}} = 1 - \frac{1}{2} x + \frac{3}{8} x^2 - O(x^3)$$
+
+So substituting $x = -v^2/c^2$
+
+$$\frac{1}{\sqrt{1-v^2/c^2}} = 1 + \frac{v^2}{2c^2}+ \frac{3v^4}{8c^4} + O(\frac{v^6}{c^6})$$
+
+Putting this in our original equation, 
+
+$$K_r = mc^2(1 + \frac{v^2}{2c^2}+ \frac{3v^4}{8c^4} + O(\frac{v^6}{c^6})- 1)$$
+
+$$K_r = m(\frac{v^2}{2}+ \frac{3v^4}{8c^2} + O(\frac{v^6}{c^4}))$$
+
+$$K_r = \frac{mv^2}{2}+ m(\frac{3v^4}{8c^2} + O(\frac{v^6}{c^4}))$$
+
+So we see that $K_r - K$ is approximately 0 when $v << c$
+
+In fact, for almost all everyday experiences, the fastest objects we encounter are planes, which travel around 250m/s, whereas 
+$c \approx 3*10^8 m/s$
+
+so $v^4/c^2 \approx 6.9*10^{-13} m^2/s^2$
+
+Compared with $v^2 = 6.25*10^4 m^2/s^2$
+
+we see that the contribution to $K_r$ from all terms other than the first- $mv^2/2$ are negligible. 
+
+This shows that, for everyday use, $K_r = K$ when taking into account precision or significant figures 
+
+
+\end{document}

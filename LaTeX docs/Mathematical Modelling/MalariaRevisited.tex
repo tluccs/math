@@ -1,0 +1,114 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 9
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+From the previous malaria model, we had 
+
+$$H' = IB \gamma \frac{P-H}{P} - \rho H$$
+
+$$I' = - \mu I + (M-I)B \frac{H}{P}$$
+
+Now, given the fact that $\rho = \mu$ and $P = M$ (in values)
+
+Let's non-dimensionalize this, by defining a few variables:
+
+$H = h\bar{h}$
+
+$I = m\bar{i}$
+
+$t = \tau\bar{t}$
+
+Then we have
+
+$$\frac{\bar{h}}{\bar{t}} h' = m\bar{i} B \gamma \frac{P-h\bar{h}}{P} - \rho h\bar{h}$$
+
+$$ h' = m\bar{i}\bar{t} B \gamma \frac{P-h\bar{h}}{P \bar{h}} - \rho h\bar{t}$$
+
+Setting $\bar{t} = \frac{1}{\rho}$, $\bar{h} = P$,  
+
+$$ h' = m\bar{i}\bar{t} B \gamma \frac{1-h}{P} - h$$
+
+And 
+
+$$\frac{\bar{i}}{\bar{t}} m' = - \mu m\bar{i} + (M-m\bar{i})B \frac{h\bar{h}}{P}$$
+
+$$ m' = - \mu m\bar{t} + (M-m\bar{i})B \frac{h\bar{h}\bar{t}}{P\bar{i}}$$
+
+Since $\mu = \rho$, $\bar{t} = \frac{1}{\mu}$. Now set $\bar{i} = M$
+
+ $$ m' = - m + (1-m)B{h\bar{t}}$$
+ 
+ Now let $B \bar{t} = \epsilon$, as $\epsilon$ is small. Then
+ 
+  $$ m' = - m + \epsilon (1-m)h$$
+  
+  $$ h' = m\bar{t} B \gamma \frac{(1-h)M}{P} - h$$
+  
+  $M/P = 1$, so this simplifies to 
+  
+  $$ h' = m \epsilon \gamma (1-h) - h$$
+ 
+Now, lets make the ansantz that 
+
+$h = h_0 + \epsilon h_1 + ... $
+
+$m = m_0 + \epsilon m_1 + ... $
+
+As $\epsilon < 1$ and the terms on the order of $\epsilon^2$ or higher are negligible. 
+
+We can now solve the differential equation subject to the constraints of 
+
+$h(0) = \zeta$
+
+$m(0) = \eta$
+
+Under these constraints, all order epsilon and higher terms are 0 at $\tau = 0$ and the first order terms are
+
+$h_0(0) = \zeta$
+
+$m_0(0) = \eta$
+
+The ansantz creates the following differential equations: 
+
+  $$ h_0' =  - h_0$$
+  $$ m_0' =  - m_0$$
+  $$ h_1' = m_0  \gamma (1-h_0) - h_1$$
+  $$ m_1' = - m_1 +(1-m_0)h_0$$
+  
+  The first two are simple,
+  
+    $$ h_0 =  \zeta * e^{-\tau}$$
+    $$ m_0 =  \eta * e^{-\tau}$$
+    
+  Then 
+  
+    $$ h_1' + h_1 = m_0  \gamma (1-h_0)$$
+    $$ (h_1e^{\tau})' = \eta \gamma (1 -  \zeta * e^{-\tau})$$
+    $$ (h_1e^{\tau}) = \eta \gamma (\tau +  \zeta * e^{-\tau}) + C$$
+    $$ h_1 = \eta \gamma (\tau e^{-\tau} +  \zeta * e^{-2\tau}) + Ce^{-\tau}$$
+    $$h_1(0) = \eta \gamma ( \zeta ) + C = 0$$
+    
+    So finally: 
+  
+      $$ h_1 = \eta \gamma (\tau e^{-\tau} +  \zeta * e^{-2\tau} - \zeta * e^{-\tau})$$
+  
+  Similarly
+  
+    $$ m_1' + m_1 = h_0  (1-m_0)$$
+    $$ (m_1e^{\tau})' = \zeta (1 -  \eta * e^{-\tau})$$
+    $$ (m_1e^{\tau}) = \zeta  (\tau +  \eta * e^{-\tau}) + C$$
+    $$ m_1 = \zeta (\tau e^{-\tau} +  \eta * e^{-2\tau} - \eta * e^{-\tau}) $$
+    
+So up to order $\epsilon$,
+
+$$h = \zeta * e^{-\tau} + \epsilon \eta \gamma (\tau e^{-\tau} +  \zeta * e^{-2\tau} - \zeta * e^{-\tau})$$
+
+$$m = \eta * e^{-\tau} + \epsilon \zeta  (\tau e^{-\tau} +  \eta * e^{-2\tau}- \eta * e^{-\tau})$$
+  
+\end{document}

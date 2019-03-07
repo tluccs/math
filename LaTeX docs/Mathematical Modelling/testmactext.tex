@@ -1,0 +1,35 @@
+\documentclass{article}
+\begin{document}
+We will try to find the relative difference between two powers, $P_C$ - the highest input power at which the earth will freeze over, and $P_H$ - the lowest input power at which the earth will be completely covered in water. 
+
+To do this, we must first make a few assumptions:
+
+-The earth consists only of ice or water. 
+
+-At temperature $T=0^oC$ (or below), the earth is completely covered in ice. 
+
+-At temperature $T=20^oC$ (or above), the earth is completely filled in water.
+
+-Ice reflects 70\% of all radiation it is exposed to.
+
+-Water reflects 10\% of all radiation it is exposed to.
+
+-Due to a greenhouse effect, 50\% of all radiation reflected is re-absorbed.
+
+-Let $P$ denote the total power coming into the earth.
+
+-The earth's radius is $40,000km$
+
+Now, let's define $P_a(T)$ - the Power Absorbed by the earth (as a function of temperature, since temperature affects the composition of earth). We know $P$ is the total power coming, and that- depending on the composition of the earth- a certain part is reflected outward, let's call this $P_r(T)$. Furthermore, 50\% of the amount reflected is re-absorbed. 
+
+So $P_a(T) = P - P_r(T) + .5*P_r(T) = P - .5*P_r(T)$
+
+We know $P_r(T) = .7*P$ for $T \le 0$, as the earth will be entirely composed of ice at these temperatures. And for $T \ge 20$, $P_r(T) = .1*P$, as the earth will be entirely composed of water at these temperatures.
+
+Let's assume that $P_r(T)$ in between these regions is linear. This makes physical sense as the earth will be a mix of ice and water. Furthermore, $P_r(T)$ should be decreasing in this region. 
+
+
+
+
+
+\end{document}

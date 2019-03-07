@@ -1,0 +1,63 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 7
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+To model malaria, let's find models for the infected humans (H) and the infected mosquitos (I). First, let's define our variables 
+
+P = human population (assume constant, if someone dies they get replaced)
+
+M = mosquito population (assume constant)
+
+B = number of bites a mosquito takes per time (on average)
+
+$\gamma$ = probability a bitten human will be infected. Additionally, assume a mosquito will be infected if it comes into contact with an infected human
+
+$\rho$ = rate of recovery and death for humans
+
+$\mu$ = rate at which mosquitos die
+
+We will also consider all probabilities/averages as fixed certainties. For example, if B = 3, then each mosquito will take exactly 3 bites. 
+We will also assume that P is large enough such that the probability that any mosquito bites a person that another mosquito bites (in the same time frame) is negligible. 
+
+To model H: We know that H increases when a person (healthy) is bitten. There are I infected mosquitoes, and each takes B bites, with probability $\gamma$ to get someone sick. However, this only occurs if the person is not already sick- the probability of a random person being healthy is simply: 
+
+healthy/total = $(P-H)/P$
+
+
+Further, H decreases if someone recovers or dies. There are H infected people, and each has a $\rho$ chance to recover or die. 
+Hence we can model H' as follows:
+
+$$H' = IB \gamma \frac{P-H}{P} - \rho H$$
+
+Similarly, I decreases if a infected mosquito dies. There are I infected mosquitos and each mosquito has the chance $\mu$ to die. I increases if a mosquito (healthy) bites an infected human. There are (M-I) healthy mosquitos, and each one takes B bites, and the probability that a random person is infected is simply H/P. 
+
+$$I' = - \mu I + (M-I)B \frac{H}{P}$$
+
+Let's look at the fixed points of this system, setting I' = H' = 0. 
+
+One such point is H = 0, I = 0. That is, malaria does not exist within the community. Suppose now that a single infected mosquito/human was added to the system. There is a high chance that the person/mosquito will be able to infect another before dying (by intuition). Thus, it is expected that locally at (0, 0), I' $>$ 0 and H' $>$ 0
+
+The other point is 
+
+$$H = P* \frac{B^2\gamma M - \mu \rho P }{B^2 \gamma M + B \rho P} = P*a$$
+
+Where $0 < a < 1$, as the numerator is less than $B^2 \gamma M$ and the denominator is greater than that value.
+
+It's also fair to assume $M  >> P$, as there are far more insects than humans in the world. So it would be fair to assume that a is probably greater than 0.8, as $B >> \mu , \rho$ as well (B should be about 3 to 7, whereas the rates would be less than $10\%$, by intuition) 
+
+$$I = M \frac{B^2\gamma - \mu \rho P/M }{B^2 \gamma + B \gamma \mu} = M*b$$
+
+Where $0 < b < 1$ as the numerator is less than $B^2 \gamma$ and the denominator is greater than that. Furthermore, as $P/M << 1$, and $B >> \mu, \gamma$, it would also be fair to assume $b > 0.8$
+
+This tells us that there is a critical point at which more than $80\%$ of mosquitos and humans are infected. At this critical point, it is highly likely that, since so few people are left to infect, I' and H' are very low. Furthermore, there would be many people/mosquitos dying, and being replaced. This also agrees with I' and H' being very low. If either of the two would be below zero (for example if almost all the population was infected, most of the population would die from malaria (or natural causes for mosquitos), but would be replaced by a healthy group, allowing I' and H' to become positive again. Hence it is fair to assume that this point is a stable point, where I and H will tend to after sufficient time, regardless of initial condition (as long as malaria exists in the population).
+ 
+
+
+
+\end{document}

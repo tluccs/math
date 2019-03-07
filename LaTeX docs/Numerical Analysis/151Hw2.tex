@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\begin{document}
+Tameez Latib
+
+
+----
+
+1.
+a)  We have that $p_n \rightarrow p^* = 0$ and that $p_{n+1} = ln(p_n +  1)/2, p_0 = 1$
+
+Now we want to show that $p_n$ converges linearly.
+
+If we set $$g(x) = \frac{1}{2} ln(x+1)$$
+
+We can apply the fixed point theorem if $|g'(x)| < 1$ for all $x \in I$ and g maps $I$ to itself for some interval $I$
+
+Let $I = [0, 2]$. $g(I) = [0, 0.346] \in I$ and 
+
+$$g'(x) = \frac{1}{2(x+1)} $$
+
+$g'(I) = [\frac{1}{6}, 0.5]$ So $|g'(x)| < 1$ for all $x \in I$. 
+
+Therefore the fixed point theorem gives us a unique fixed point, and that $p_{n+1} = ln(p_n +  1)/2$ converges linearly. 
+
+b) We have that $p_n \rightarrow p^* = 1$ and that $p_{n} =1 + 2^{1-n} + (n+2)^{-n}, p_0 = 4$
+
+Now we want to show that $p_n$ converges linearly.
+
+
+$$\lim_{n \to \infty} \frac{|p_{n+1}-p^*|}{|p_{n}-p^*|} = \lim_{n \to \infty} \frac{|2^{1-(n+1)} + ((n+1)+2)^{-(n+1)}|}{|2^{1-n} + (n+2)^{-n|}}$$
+
+$$= \lim_{n \to \infty} \frac{|2^{-n} + (n+3)^{-n-1}|}{|2^{1-n} + (n+2)^{-n}|} = 1 $$
+
+So therefore the sequences converges linearly.
+
+
+2
+We have that $p_{n} = 10^{-2^n}$
+
+Now we want to show that $p_n$ converges and that it converges quadratically.
+
+Clearly 
+
+$$ \lim_{n \to \infty} 10^{-2^n} = 0 $$
+
+ So now we only need to prove quadratic convergence: 
+
+$$\lim_{n \to \infty} \frac{|10^{-2^(n+1)}|}{|{10^{(-2^n)}}^{\alpha}|} = \lim_{n \to \infty} |10^{-(2^n)*2+(2^n)*\alpha}| = 1$$
+
+for $\alpha$ = 2. Therefore we have quadratic convergence
+
+3. We have $f(1) = 2, f(2) = 1, f(3) = 4, f(4) = 3$ 
+
+a)
+Lagrange interpolation to find polynomial $f$:
+
+We define 
+
+$$L_1(x) = \frac{(x-2)(x-3)(x-4)}{(1-2)(1-3)(1-4)} =  \frac{(x-2)(x-3)(x-4)}{-6} $$
+
+$$L_2(x) = \frac{(x-1)(x-3)(x-4)}{(2-1)(2-3)(2-4)} =  \frac{(x-1)(x-3)(x-4)}{2} $$
+
+$$L_3(x) = \frac{(x-1)(x-2)(x-4)}{(3-1)(3-2)(3-4)} =  \frac{(x-1)(x-2)(x-4)}{-2} $$
+
+$$L_4(x) = \frac{(x-1)(x-2)(x-3)}{(4-1)(4-2)(4-3)} = \frac{(x-1)(x-2)(x-3)}{6}$$
+
+Then we have 
+
+$$f(x) = L_1(x)f(1) + L_2(x)f(2) + L_3(x)f(3) + L_4(x)f(4) $$
+
+$$f(x) = 2L_1(x) + L_2(x) + 4L_3(x) +3 L_4(x) $$
+
+Which is a polynomial of degree 3 that satisfies the 4 equations: 
+
+$f(1) = 2, f(2) = 1, f(3) = 4, f(4) = 3$ 
+
+b)
+Using Nevilles method we construct 
+
+$$P_1(x) = 2$$
+$$P_2(x) = 1$$
+$$P_3(x) = 4$$
+$$P_4(x) = 3$$
+
+$$P_{12}(x) = \frac{(x-1)P_2(x) - (x-2)P_1(x)}{2-1} =  -x+3 $$
+$$P_{23}(x) =  \frac{(x-2)P_3(x) - (x-3)P_2(x)}{3-2} =  3x-5 $$
+$$P_{34}(x) =  \frac{(x-3)P_4(x) - (x-4)P_3(x)}{4-3} =  -x+7$$
+
+$$P_{123}(x) = \frac{ (x-1)P_{23}(x) - (x-3)P_{12}(x)}{3-1} =  2x^2-7x+7$$
+$$P_{234}(x) =  \frac{  (x-2)P_{34}(x) - (x-4)P_{23}(x)}{4-2} =  -2x^2+13x-17 $$
+
+
+$$f(x) = \frac{(x-1)P_{234}(x) - (x-4)P_{123}(x) }{4-1} = \frac{1}{3} (-4x^3 +30x^2 -65x+ 45)  $$
+
+Which is a polynomial of degree 3 that satisfies the 4 equations: 
+
+$f(1) = 2, f(2) = 1, f(3) = 4, f(4) = 3$ 
+
+Furthermore, this is the same polynomial as constructed in a) since we have 4 equations and 4 unknowns (coefficients of $x^3, x^2, x, 1$) so they must be the same polynomial.
+ 
+ 
+ 4. Refer to code and graphs
+
+
+
+
+\end{document}

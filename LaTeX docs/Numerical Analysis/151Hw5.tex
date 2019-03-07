@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{ dsfont }
+
+\begin{document}
+Tameez Latib
+
+
+----
+
+1. 
+
+$$C = 
+ \begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    2 & 5 & 7 & 9 \\
+    3 & 7 & 11 & 14 \\
+    4 & 9 & 14 & 19
+\end{bmatrix}
+$$
+
+We want to find the LU factorization, so first we pivot on $C_{11}$:
+
+$$C_1 = L_1C$$
+
+Where 
+$$L_1 = 
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    -2 & 1 & 0 & 0 \\
+    -3 & 0 & 1 & 0 \\
+    -4 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+So that 
+$$C_1 =  
+\begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & 1 \\
+    0 & 1 & 2 & 2 \\
+    0 & 1 & 2 & 3
+\end{bmatrix}
+$$
+
+And now we pivot on $(C_1)_{22}$: 
+
+$$C_2 = L_2C_1$$
+
+Where 
+$$L_2 = 
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & -1 & 1 & 0 \\
+    0 & -1 & 0 & 1
+\end{bmatrix}
+$$
+
+So that 
+$$C_2 =  
+\begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & 1 \\
+    0 & 0 & 1 & 2
+\end{bmatrix}
+$$
+
+
+And now we pivot on $(C_2)_{33}$: 
+
+$$C_3 = L_3C_2$$
+
+Where 
+$$L_3 = 
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & -1 & 1
+\end{bmatrix}
+$$
+
+So that 
+$$C_3 =  
+\begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & 1 \\
+    0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+Now we have that $U = C_3$ and $L = (L_3L_2L_1)^{-1} = L_1^{-1}L_2^{-1}L_3^{-1}$
+
+$$L = 
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    2& 1 & 0 & 0 \\
+    3 & 1 & 1 & 0 \\
+    4 & 1 & 1 & 1
+\end{bmatrix}
+$$
+
+$$U
+\begin{bmatrix}
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & 1 \\
+    0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+
+2. $A \in \mathds{R}^{n \times n}$ is strictly diagonally dominant, then if $A = D - R$, where D is a diagonal matrix, then
+
+a. Show $||D^{-1}R||_{\infty} < 1$
+
+Since A is strictly diagonally dominant, $$ |D_{ii}|  = |A_{ii}|  > \sum^n_{j=1, j \ne i}|A_{ij}| = \sum^n_{j=1, j \ne i} |R_{ij}| $$
+
+for all $i$
+
+Therefore, $$\sum^n_{j=1, j \ne i} |(D^{-1}R)_{ij}| = \sum^n_{j=1, j \ne i}|(D^{-1})_{ii}R_{ij}| = \frac{\sum^n_{j=1, j \ne i}|R_{ij}|}{D_{ii}} < 1   $$ 
+
+for all $i$
+
+Also note that $(D^{-1}R)_{ii} = 0$, so we then have
+
+$$\sum^n_{j=1} |(D^{-1}R)_{ij} | < 1$$ 
+
+for all $i$, so $||D^{-1}R||_{\infty} < 1$
+
+
+b. Show the iteration 
+$$x_{k+1} = D^{-1}Rx_k + D^{-1}b$$
+
+converges and converges to the solution of $Ax = b$
+
+Since $||D^{-1}R||_{\infty} < 1$, we can apply fixed point theorem element-wise on $x_k$, 
+
+$(x_k)_i = 
+
+\end{document}

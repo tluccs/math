@@ -1,0 +1,131 @@
+\documentclass{article}
+\begin{document}
+Tameez Latib
+
+Problem 4
+
+I, Tameez Latib, declare that this work is my own. I did this work honestly and can fully stand behind everything that I have written.
+
+---
+
+By using the technique of non-dimensionalisation, we will simplify the Navier-Stokes equation for viscous, incompressible fluids.
+
+From the form 
+
+$$\rho u_t + \rho (u \cdot \bigtriangledown ) u - \mu \bigtriangleup u + \bigtriangledown P = \rho g$$
+
+With u as the velocity, $\rho$ the density, $\mu$ a constant, P the pressure, and g the gravitational constant
+
+to 
+
+$$u_t + (u \cdot \bigtriangledown)u = ? \bigtriangledown p + \frac{1}{Re} \bigtriangleup u + \frac{1}{Fr^2} \hat{g} $$
+
+Where $\hat{g}$ is the unit vector in the direction of g, and Re and Fr are the Reynold and Froude numbers respectively.
+
+First, let's start by defining some new dimensionless variables, (the barred quantities contain dimensions, whereas a variable $u_n$ is the new, dimensionless u)
+
+$u_n = u / \bar{u}$
+
+$x_n = x / \bar{L}$
+
+$y_n = y / \bar{L}$
+
+$z_n = z / \bar{L}$
+
+$ \bigtriangledown_n = \bar{L}  \bigtriangledown$
+
+$ \bigtriangleup_n = \bar{L}^2  \bigtriangleup$
+
+$\tau = t / \bar{t}$
+
+$p_n = P / \bar{P}$
+
+$\hat{g} = g / \bar{g} $
+
+Then 
+
+$$ \frac{\partial u_n}{\partial \tau} = \frac{\partial u}{\partial t} * \frac{\bar{t}}{\bar{u}}$$
+
+Intuitively, the dimensions on the left side should be dimensionless, and the dimensions on the right (without the barred quantities) were velocity per second, so multiplying the right by seconds per velocity $({\bar{t}}/{\bar{u}})$ gives a dimensionless value
+
+The same intuition shows why
+
+$ \bigtriangledown_n = \bar{L}  \bigtriangledown$ - Per length on the right hand side, so multiply by our length quantity
+
+$ \bigtriangleup_n = \bar{L}^2  \bigtriangleup$ - Per length squared on the right side, so multiply by the square of our length quantity
+
+Now, by substituting our new terms in the original equation, 
+
+$$\rho \frac{\bar{u}}{\bar{t}} \frac{\partial u_n}{\partial \tau} + \rho \frac{\bar{u_n}^2 }{\bar{L}} (u_n \cdot \bigtriangledown_n ) u_n - \frac{\mu \bar{u}}{\bar{L}^2} \bigtriangleup_n u_n + \frac{\bar{p}}{\bar{L}}\bigtriangledown_n p_n = \rho \hat{g} \bar{g}$$
+
+The equation is very messy, but by dividing by  $\rho {\bar{u}}/{\bar{t}}$, it becomes a bit clearer.
+
+$$ \frac{\partial u_n}{\partial \tau} + \frac{\bar{u}\bar{t}}{\bar{L}} (u_n \cdot \bigtriangledown_n ) u_n - \frac{\mu \bar{t}}{\rho \bar{L}^2} \bigtriangleup_n u_n + \frac{\bar{p} \bar{t}}{\bar{L}\bar{u} \rho}\bigtriangledown_n p_n = \frac{\hat{g} \bar{g} \bar{t}}{\bar{u}}$$
+
+
+Let's go through the equation looking at each dimensional coefficient. The 1st term has no dimensions. The 2nd term has dimensions of
+
+$$\frac{\bar{u}\bar{t}}{\bar{L}}$$  length/time * time / length = length / length (dimensionless), so that's good. We can set this quantity equal to 1 for further simplification. 
+
+The 3rd term has dimensions of
+
+$$\frac{\mu \bar{t}}{\rho \bar{L}^2} $$
+Which is also dimensionless, so we can set this quantity to $\frac{1}{Re}$
+
+The 4th term has dimensions 
+
+$$\frac{\bar{p} \bar{t}}{\bar{L}\bar{u} \rho} $$
+Again, this quantity is dimensionless, and we will set this value equal to 1 as well
+
+The 5th term is also dimensionless as expected
+
+$$\frac{\bar{g} \bar{t}}{\bar{u}}$$
+So we can set this equal to $\frac{1}{Fr^2}$
+
+We can set all these variables without worrying because we have more variables than restraints.
+
+Now our equation is simplified to 
+
+$$ \frac{\partial u_n}{\partial \tau} + (u_n \cdot \bigtriangledown_n ) u_n - \frac{1}{Re} \bigtriangleup_n u_n + \bigtriangledown_n p_n = \frac{\hat{g}}{Fr^2}$$
+
+Moving the 2nd and 3rd terms to the other side yields the desired equation. 
+
+----
+
+Now to estimate the drag force in a liquid for a ball. Let's suppose the drag force depends solely on the radius of the ball (r), the velocity of the ball (U), and the density of the fluid $(\rho)$, and the viscosity $\mu$. Intuitively, the higher the velocity, the greater the opposing force. The greater the radius, the more contact area and so more force. The higher the density, the fluid becomes more weighted and so it should oppose the particle even more. The higher the viscosity, the more resistance (e.g. honey)
+
+
+A force is equivalent to units of $ML/T^2$
+ 
+A velocity is equivalent to units of $L/T$
+
+Radius is simply $L$
+
+Density is $M/L^3$
+
+and the viscosity is $M/TL$
+
+Since there are 5 variables and only 3 distinct units, let's apply the Buckingham pi theorem.
+
+Let r, U, and $\mu$ be our 3 elements with fundamental units. 
+
+We can express F and $\rho$ in terms of these quantities. 
+
+$F = \mu * U * r$
+
+so let $Q_1 =  \frac{F}{\mu * U * r}$, a dimensionless number
+
+Similarly, 
+
+$\rho = \mu * U^{-2} * r^-2$
+
+so let $Q_2 = U^2 *r^2*\rho/\mu$, our second dimensionless number
+
+Now, there exists a relationship between $Q_1$ and $Q_2$
+
+We want to find F, so suppose $Q_1 = g(Q_2)$ for some unknown function g. Rearranging the terms slightly, we find
+
+$$F = \mu * U * r * g(\frac{U^2 *r^2*\rho}{\mu})$$
+
+
+\end{document}
